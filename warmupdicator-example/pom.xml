@@ -11,7 +11,7 @@
 
     <groupId>io.github.paxytools</groupId>
     <artifactId>warmupdicator-example</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>warmupdicator-example</name>
     <description>Example Spring Boot application using Warmupdicator</description>
 
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>io.github.paxytools</groupId>
             <artifactId>warmupdicator-spring-boot-starter</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
 
         <!-- Database dependencies for the example -->
@@ -101,8 +101,4 @@
             </plugin>
         </plugins>
     </build>
-
-  <scm>
-    <tag>warmupdicator-spring-boot-parent-0.0.1</tag>
-  </scm>
 </project>
