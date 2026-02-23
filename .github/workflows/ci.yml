@@ -1,4 +1,4 @@
-name: Warmupdicator CI Pipeline
+name: Warmupdicator CI
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '17', '21', '25' ]
+        java: [ '17', '21' ]
         distribution: [ 'zulu', 'temurin' ]
     name: Java ${{ matrix.java }} ${{ matrix.distribution }} build
     steps:
