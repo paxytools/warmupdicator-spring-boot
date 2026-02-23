@@ -4,10 +4,10 @@
 
 **Requirements:** Java 17+ and Spring Boot 3.0+
 
-[![Build Status](https://img.shields.io/travis/username/spring-boot-starter-warmupdicator.svg?branch=main)](https://travis-ci.org/username/spring-boot-starter-warmupdicator)
+[![CI](https://github.com/paxytools/warmupdicator-spring-boot/actions/workflows/ci.yml/badge.svg)](https://github.com/paxytools/warmupdicator-spring-boot/actions/workflows/ci.yml)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.paxytools/warmupdicator-spring-boot-starter/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.paxytools/warmupdicator-spring-boot-starter)
-[![GitHub release](https://img.shields.io/github/release/username/spring-boot-starter-warmupdicator.svg)](https://github.com/username/spring-boot-starter-warmupdicator/releases)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/username/spring-boot-starter-warmupdicator/blob/main/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/paxytools/warmupdicator-spring-boot.svg)](https://github.com/paxytools/warmupdicator-spring-boot/releases)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/paxytools/warmupdicator-spring-boot/blob/main/LICENSE)
 
 Warmupdicator Spring Boot provides warmup monitoring support for Spring Boot Applications.<br/>
 There are 2 ways to integrate `warmupdicator-spring-boot` in your project:
