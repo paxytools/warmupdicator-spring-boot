@@ -1,0 +1,61 @@
+name: Publish package to the Maven Central Repository
+on:
+  release:
+    types: [created]
+  workflow_dispatch: {}
+
+jobs:
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      #        with:
+      #          token: ${{ secrets.ACTIONS_PAT }}
+      - name: Setup Git Client
+        run: |
+          git config --global user.name 'Github Actions Bot'
+          git config --global user.email 'actions@users.noreply.github.com'
+      - name: Setup Git Credentials
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+      - name: Set up Java and Maven settings
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+          server-id: central
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      - name: Publish package
+        run: mvn --no-transfer-progress --batch-mode release:prepare release:perform
+#        run: mvn --no-transfer-progress --batch-mode release:prepare release:perform -Darguments="-Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} -Dgpg.keyname=${{ steps.import_gpg.outputs.keyid }}"
+        env:
+          MAVEN_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}
+      - name: Extract version and find previous tag
+        id: version
+        run: |
+          # Get current version from released tag
+          CURRENT_TAG=$(git describe --tags --abbrev=0)
+          VERSION=${CURRENT_TAG#warmupdicator-spring-boot-parent-}
+          
+          # Find previous tag
+          PREVIOUS_TAG=$(git tag --sort=-version:refname | grep "^warmupdicator-spring-boot-parent-" | grep -v "${CURRENT_TAG}" | head -1)
+          
+          echo "current_tag=${CURRENT_TAG}" >> $GITHUB_OUTPUT
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "previous_tag=${PREVIOUS_TAG:-}" >> $GITHUB_OUTPUT
+      - name: Create GitHub Release
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.version.outputs.current_tag }}" \
+            --title "v${{ steps.version.outputs.version }}" \
+            --generate-notes
