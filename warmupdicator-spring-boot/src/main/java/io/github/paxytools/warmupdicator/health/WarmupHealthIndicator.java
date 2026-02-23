@@ -5,7 +5,6 @@ import io.github.paxytools.warmupdicator.service.WarmupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.boot.actuate.health.Status;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +21,7 @@ public class WarmupHealthIndicator implements HealthIndicator {
     @Override
     public Health health() {
         boolean isWarmedUp = warmupService.isWarmedUp();
-        Health.Builder builder = isWarmedUp ? Health.up() : Health.status(Status.OUT_OF_SERVICE);
+        Health.Builder builder = isWarmedUp ? Health.up() : Health.down();
 
         // Add simplified status information
         String status = isWarmedUp ? "OK" : "FAIL";

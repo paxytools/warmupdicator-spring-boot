@@ -45,7 +45,7 @@ public class WarmupdicatorConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty(prefix = "warmupdicator.dto-warmer", name = "enabled", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = "warmupdicator.dto-warmer", name = "enabled", havingValue = "true")
     public DtoWarmupIndicator dtoWarmupIndicator(WarmupdicatorProperties properties, ObjectMapper objectMapper, @Qualifier("requestMappingHandlerMapping") RequestMappingHandlerMapping handlerMapping) {
         return new DtoWarmupIndicator(properties.getDtoWarmer(), objectMapper, handlerMapping);
     }
