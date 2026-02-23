@@ -1,0 +1,160 @@
+{
+  "groups": [
+    {
+      "name": "warmupdicator",
+      "type": "io.github.paxytools.warmupdicator.config.WarmupdicatorProperties",
+      "sourceType": "io.github.paxytools.warmupdicator.config.WarmupdicatorProperties"
+    },
+    {
+      "name": "warmupdicator.dto-warmer",
+      "type": "io.github.paxytools.warmupdicator.config.DtoWarmerProperties",
+      "sourceType": "io.github.paxytools.warmupdicator.config.DtoWarmerProperties"
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer",
+      "type": "io.github.paxytools.warmupdicator.config.EndpointWarmerProperties",
+      "sourceType": "io.github.paxytools.warmupdicator.config.EndpointWarmerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "warmupdicator.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable/disable warmup checks.",
+      "defaultValue": true
+    },
+    {
+      "name": "warmupdicator.show-details",
+      "type": "java.lang.Boolean",
+      "description": "Show detailed information in health endpoint.",
+      "defaultValue": false
+    },
+    {
+      "name": "warmupdicator.dto-warmer.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable DTO preloading warmup.",
+      "defaultValue": false
+    },
+    {
+      "name": "warmupdicator.dto-warmer.exclude-patterns",
+      "type": "java.util.List",
+      "description": "DTO class patterns to exclude from warmup. Supports wildcards like \"*Record\" or \"*Immutable\".",
+      "defaultValue": ["*Record", "*Immutable"]
+    },
+    {
+      "name": "warmupdicator.dto-warmer.warmup-serialization",
+      "type": "java.lang.Boolean",
+      "description": "Warm up Jackson serialization by calling objectMapper.writeValueAsBytes(dtoInstance).",
+      "defaultValue": true
+    },
+    {
+      "name": "warmupdicator.dto-warmer.warmup-deserialization",
+      "type": "java.lang.Boolean",
+      "description": "Warm up Jackson deserialization. Feasibility is determined by: 1. For records: Uses Jackson's canDeserialize() capability check 2. For non-records: Requires successful DTO instantiation and serialization first. Default: true (failsafe handling prevents startup failures)",
+      "defaultValue": true
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable/disable this specific endpoint warmup.",
+      "defaultValue": true
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints",
+      "type": "java.util.List",
+      "description": "List of HTTP endpoint warmup targets."
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints[].name",
+      "type": "java.lang.String",
+      "description": "Unique identifier for this endpoint. If not provided, will be generated automatically."
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints[].http-method",
+      "type": "java.lang.String",
+      "description": "HTTP method to use (GET, POST, PUT, DELETE, HEAD, PATCH, OPTIONS).",
+      "defaultValue": "GET"
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints[].url",
+      "type": "java.lang.String",
+      "description": "Full URL to call."
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints[].headers",
+      "type": "java.util.Map",
+      "description": "Custom HTTP headers."
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints[].request-body",
+      "type": "java.lang.String",
+      "description": "Request body/payload for POST/PUT/PATCH requests."
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints[].max-response-time",
+      "type": "java.lang.Long",
+      "description": "Maximum acceptable response time threshold in milliseconds. Also used as HTTP request timeout.",
+      "defaultValue": 500
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints[].expected-status",
+      "type": "java.lang.Integer",
+      "description": "Expected HTTP status code (accepts any 2xx if not set).",
+      "defaultValue": null
+    },
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints[].ignore-failure",
+      "type": "java.lang.Boolean",
+      "description": "If true, failures will be ignored and the endpoint will be considered successful.",
+      "defaultValue": false
+    }
+  ],
+  "hints": [
+    {
+      "name": "warmupdicator.endpoint-warmer.endpoints",
+      "values": [
+        {
+          "value": "name",
+          "description": "Unique identifier for this endpoint. If not provided, will be generated automatically."
+        },
+        {
+          "value": "enabled",
+          "description": "Enable/disable this specific endpoint warmup."
+        },
+        {
+          "value": "http-method",
+          "description": "HTTP method to use (GET, POST, PUT, DELETE, HEAD, PATCH, OPTIONS)."
+        },
+        {
+          "value": "request-body",
+          "description": "Request body/payload for POST/PUT/PATCH requests."
+        },
+        {
+          "value": "max-response-time",
+          "description": "Maximum acceptable response time threshold in milliseconds. Also used as HTTP request timeout."
+        },
+        {
+          "value": "ignore-failure",
+          "description": "If true, failures will be ignored and the endpoint will be considered successful."
+        }
+      ]
+    },
+    {
+      "name": "warmupdicator.dto-warmer",
+      "values": [
+        {
+          "value": "exclude-patterns",
+          "description": "DTO class patterns to exclude from warmup. Supports wildcards like \"*Record\" or \"*Immutable\"."
+        },
+        {
+          "value": "warmup-serialization",
+          "description": "Warm up Jackson serialization by calling objectMapper.writeValueAsBytes(dtoInstance)."
+        },
+        {
+          "value": "warmup-deserialization",
+          "description": "Warm up Jackson deserialization. Feasibility is determined by: 1. For records: Uses Jackson's canDeserialize() capability check 2. For non-records: Requires successful DTO instantiation and serialization first. Default: true (failsafe handling prevents startup failures)"
+        }
+      ]
+    }
+  ]
+}

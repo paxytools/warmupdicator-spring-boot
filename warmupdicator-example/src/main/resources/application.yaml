@@ -1,0 +1,20 @@
+spring:
+  config:
+    import: warmupdicator.yaml
+
+# Spring Boot Actuator configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+      group:
+        readiness:
+          include: readinessState, db, warmup
+        liveness:
+          include: livenessState

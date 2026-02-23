@@ -1,0 +1,99 @@
+# Warmupdicator configuration
+warmupdicator:
+  enabled: true
+  show-details: true
+  dto-warmer:
+    enabled: true
+    exclude-patterns:
+      - "*Record"
+      - "*Immutable"
+    warmup-serialization: true
+    warmup-deserialization: true
+  endpoint-warmer:
+    enabled: true
+    endpoints:
+      # Test basic connectivity
+      - url: http://localhost:8080/api/test-connectivity
+        max-response-time: 1000
+
+      # Test metadata endpoint
+      - url: http://localhost:8080/api/test-metadata
+        max-response-time: 1000
+
+      # Test slow response (within acceptable range)
+      - url: http://localhost:8080/api/test-response-time?delay=500
+        max-response-time: 1000
+
+      # Test slow response (exceeds acceptable range but within timeout)
+      - url: http://localhost:8080/api/test-response-time?delay=2000
+        max-response-time: 1000
+        ignore-failure: true
+
+      # Test 4XX status codes (should fail after max retries)
+      - url: http://localhost:8080/api/test-status-codes?code=404
+        ignore-failure: true
+
+      # Test 5XX status codes (should fail after max retries)
+      - url: http://localhost:8080/api/test-status-codes?code=500
+        ignore-failure: true
+
+      # Test service unavailable with ignore-failure=true
+      - url: http://localhost:8080/api/test-failure-scenarios?fail=true
+        ignore-failure: true
+        max-response-time: 1000
+
+      # Test request validation with GET and headers
+      - url: http://localhost:8080/api/test-request-validation-get
+        http-method: GET
+        headers:
+          X-Warmup-Test: "get-request"
+          X-Client-ID: "warmupdicator-test"
+          X-Request-ID: "test-12345"
+        max-response-time: 1000
+
+      # Test request validation with POST and body
+      - url: http://localhost:8080/api/test-request-validation-post
+        http-method: POST
+        headers:
+          Content-Type: "application/json"
+          X-Warmup-Test: "post-request"
+        request-body: '{"name":"John Doe","email":"john@example.com"}'
+        max-response-time: 1000
+
+      # Test request validation with PUT and body
+      - url: http://localhost:8080/api/test-request-validation-put
+        http-method: PUT
+        headers:
+          Content-Type: "application/json"
+          X-Warmup-Test: "put-request"
+        request-body: '{"id":123,"name":"Updated Name"}'
+        max-response-time: 1000
+
+      # Test request validation with DELETE
+      - url: http://localhost:8080/api/test-request-validation-delete?delete_id=test-123
+        http-method: DELETE
+        headers:
+          X-Warmup-Test: "delete-request"
+          X-Request-ID: "test-67890"
+        max-response-time: 1000
+
+      # Test different HTTP methods (using actual controller endpoints)
+      - url: http://localhost:8080/api/test-connectivity
+        http-method: GET
+        max-response-time: 1000
+
+      - url: http://localhost:8080/api/test-metadata
+        http-method: GET
+        max-response-time: 1000
+
+      - url: http://localhost:8080/api/test-response-time?delay=100
+        http-method: GET
+        max-response-time: 1000
+
+      # Test successful status codes
+      - url: http://localhost:8080/api/test-status-codes?code=201
+        max-response-time: 1000
+
+      # Test service unavailable with ignore-failure=false
+      - url: http://localhost:8080/api/test-failure-scenarios?fail=false
+        max-response-time: 1000
