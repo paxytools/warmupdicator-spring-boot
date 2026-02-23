@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Maven Release ###
+release.properties
+*.releaseBackup
+pom.xml.releaseBackup

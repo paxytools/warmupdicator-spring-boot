@@ -30,8 +30,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/paxytools/warmupdicator-spring-boot.git</connection>
-        <developerConnection>scm:git:ssh://github.com:paxytools/warmupdicator-spring-boot.git</developerConnection>
+        <connection>scm:git:https://github.com/paxytools/warmupdicator-spring-boot.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/paxytools/warmupdicator-spring-boot.git</developerConnection>
         <url>https://github.com/paxytools/warmupdicator-spring-boot</url>
     </scm>
 
