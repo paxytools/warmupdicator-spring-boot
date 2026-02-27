@@ -5,7 +5,7 @@
 **Requirements:** Java 17+ and Spring Boot 3.0+
 
 [![CI](https://github.com/paxytools/warmupdicator-spring-boot/actions/workflows/ci.yml/badge.svg)](https://github.com/paxytools/warmupdicator-spring-boot/actions/workflows/ci.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.paxytools/warmupdicator-spring-boot-starter/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.paxytools/warmupdicator-spring-boot-starter)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.paxytools/warmupdicator-spring-boot-starter)](https://search.maven.org/artifact/io.github.paxytools/warmupdicator-spring-boot-starter)
 [![GitHub release](https://img.shields.io/github/release/paxytools/warmupdicator-spring-boot.svg)](https://github.com/paxytools/warmupdicator-spring-boot/releases)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/paxytools/warmupdicator-spring-boot/blob/main/LICENSE)
 
@@ -25,7 +25,7 @@ Simply add the starter jar dependency to your project if your Spring Boot applic
 <dependency>
     <groupId>io.github.paxytools</groupId>
     <artifactId>warmupdicator-spring-boot-starter</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.4</version>
 </dependency>
 ```
 
@@ -39,7 +39,7 @@ If you don't use `@SpringBootApplication` or `@EnableAutoConfiguration` Auto Con
 <dependency>
     <groupId>io.github.paxytools</groupId>
     <artifactId>warmupdicator-spring-boot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.4</version>
 </dependency>
 ```
 
