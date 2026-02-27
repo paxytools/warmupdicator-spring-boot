@@ -51,11 +51,11 @@ jobs:
           echo "current_tag=${CURRENT_TAG}" >> $GITHUB_OUTPUT
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
           echo "previous_tag=${PREVIOUS_TAG:-}" >> $GITHUB_OUTPUT
-      - name: Create GitHub Release
+      - name: Update GitHub Release
         if: success()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ steps.version.outputs.current_tag }}" \
+          gh release edit "${{ steps.version.outputs.current_tag }}" \
             --title "v${{ steps.version.outputs.version }}" \
             --generate-notes
