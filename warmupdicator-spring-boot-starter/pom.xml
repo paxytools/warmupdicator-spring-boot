@@ -10,7 +10,15 @@
     
     <artifactId>warmupdicator-spring-boot-starter</artifactId>
     <name>warmupdicator-spring-boot-starter</name>
-    <description>Spring Boot starter for the Warmupdicator library</description>
+    <description>Auto-configuration for Warmupdicator that enables warmup monitoring in your Spring Boot application with zero setup. Just add this dependency and your app will automatically warm up critical components during startup.</description>
+    <url>https://github.com/paxytools/warmupdicator-spring-boot</url>
+    
+    <scm>
+        <connection>scm:git:https://github.com/paxytools/warmupdicator-spring-boot.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/paxytools/warmupdicator-spring-boot.git</developerConnection>
+        <url>https://github.com/paxytools/warmupdicator-spring-boot</url>
+        <tag>HEAD</tag>
+    </scm>
     
     <dependencies>
         <!-- warmupdicator-spring-boot module -->

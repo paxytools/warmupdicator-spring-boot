@@ -10,7 +10,15 @@
     
     <artifactId>warmupdicator-spring-boot</artifactId>
     <name>warmupdicator-spring-boot</name>
-    <description>Spring Boot integration for the Warmupdicator library</description>
+    <description>Core library for Warmupdicator that provides warmup checks for your Spring Boot application. Define custom warmup tasks for databases, external services, and other critical components to ensure your app is ready before handling real traffic.</description>
+    <url>https://github.com/paxytools/warmupdicator-spring-boot</url>
+    
+    <scm>
+        <connection>scm:git:https://github.com/paxytools/warmupdicator-spring-boot.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/paxytools/warmupdicator-spring-boot.git</developerConnection>
+        <url>https://github.com/paxytools/warmupdicator-spring-boot</url>
+        <tag>HEAD</tag>
+    </scm>
     
     <dependencies>
         <!-- Lombok for boilerplate reduction -->
