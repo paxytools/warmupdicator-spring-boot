@@ -36,3 +36,4 @@ build/
 release.properties
 *.releaseBackup
 pom.xml.releaseBackup
+.DS_Store

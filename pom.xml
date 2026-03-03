@@ -159,7 +159,7 @@
                         <useReleaseProfile>false</useReleaseProfile>
                         <releaseProfiles>release</releaseProfiles>
                         <goals>deploy</goals>
-                        <preparationGoals>clean verify</preparationGoals>
+                        <preparationGoals>clean verify antrun:run</preparationGoals>
                         <arguments>-DskipTests</arguments>
                     </configuration>
                 </plugin>
