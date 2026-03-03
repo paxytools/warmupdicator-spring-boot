@@ -25,7 +25,7 @@ Simply add the starter jar dependency to your project if your Spring Boot applic
 <dependency>
     <groupId>io.github.paxytools</groupId>
     <artifactId>warmupdicator-spring-boot-starter</artifactId>
-    <version>0.0.9</version>
+    <version>0.0.10</version>
 </dependency>
 ```
 
@@ -39,7 +39,7 @@ If you don't use `@SpringBootApplication` or `@EnableAutoConfiguration` Auto Con
 <dependency>
     <groupId>io.github.paxytools</groupId>
     <artifactId>warmupdicator-spring-boot</artifactId>
-    <version>0.0.9</version>
+    <version>0.0.10</version>
 </dependency>
 ```
 
