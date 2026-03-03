@@ -1,6 +1,6 @@
 # Warmupdicator
 
-**Warmupdicator Spring Boot Starter lets you define and run warm-up checks for HTTP endpoints, databases, or any custom resource, ensuring your app is ready for real traffic with minimal cold starts, and provides a dedicated Actuator health check for warm-up status.**
+**Warmupdicator Spring Boot Starter lets you define and run warm-up checks for HTTP endpoints, databases, or any custom resource, ensuring your application has fully initialized critical components and preloaded required resources before serving real traffic, and provides a dedicated Actuator health check for warm-up status.**
 
 **Requirements:** Java 17+ and Spring Boot 3.0+
 
