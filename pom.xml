@@ -4,7 +4,7 @@
 
     <groupId>io.github.paxytools</groupId>
     <artifactId>warmupdicator-spring-boot-parent</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
     <packaging>pom</packaging>
 
     <name>warmupdicator</name>
@@ -32,7 +32,7 @@
         <connection>scm:git:https://github.com/paxytools/warmupdicator-spring-boot.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/paxytools/warmupdicator-spring-boot.git</developerConnection>
         <url>https://github.com/paxytools/warmupdicator-spring-boot</url>
-      <tag>HEAD</tag>
+      <tag>warmupdicator-spring-boot-parent-0.0.5</tag>
   </scm>
 
     <modules>
@@ -201,11 +201,8 @@
                                 </goals>
                                 <configuration>
                                     <target>
-                                        <echo message="Updating README versions to ${project.version}"/>
-                                        <replaceregexp file="README.md" 
-                                            match="&lt;version&gt;[^&lt;]+&lt;/version&gt;" 
-                                            replace="&lt;version&gt;${project.version}&lt;/version&gt;" 
-                                            flags="g"/>
+                                        <echo message="Updating README versions to ${project.version}" />
+                                        <replaceregexp file="README.md" match="&lt;version&gt;[^&lt;]+&lt;/version&gt;" replace="&lt;version&gt;${project.version}&lt;/version&gt;" flags="g" />
                                     </target>
                                 </configuration>
                             </execution>
