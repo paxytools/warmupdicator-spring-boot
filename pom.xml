@@ -191,23 +191,22 @@
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <version>3.1.0</version>
-                        <executions>
-                            <execution>
-                                <id>update-readme-versions</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <!-- Set inherited to false so children don't run this -->
-                                <inherited>false</inherited>
-                                <configuration>
-                                    <target>
-                                        <echo message="Updating README versions to ${project.version}" />
-                                        <replaceregexp file="${project.basedir}/README.md" match="&lt;version&gt;[^&lt;]+&lt;/version&gt;" replace="&lt;version&gt;${project.version}&lt;/version&gt;" flags="g" />
-                                    </target>
-                                </configuration>
-                            </execution>
-                        </executions>
+                        <inherited>false</inherited>
+                        <!-- This configuration ONLY triggers when 'antrun:run' is called explicitly -->
+                        <configuration>
+                            <target>
+                                <echo message="Updating README to release version: ${project.version}" />
+                                <replaceregexp
+                                        file="${project.basedir}/README.md"
+                                        match="&lt;version&gt;[^&lt;]+&lt;/version&gt;"
+                                        replace="&lt;version&gt;${project.version}&lt;/version&gt;"
+                                        flags="g" />
+                                <exec executable="git">
+                                    <arg value="add"/>
+                                    <arg value="README.md"/>
+                                </exec>
+                            </target>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
