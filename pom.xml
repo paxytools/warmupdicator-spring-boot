@@ -189,7 +189,6 @@
                         <artifactId>maven-gpg-plugin</artifactId>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <version>3.1.0</version>
                         <executions>
@@ -199,10 +198,16 @@
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
+                                <!-- Set inherited to false so children don't run this -->
+                                <inherited>false</inherited>
                                 <configuration>
                                     <target>
-                                        <echo message="Updating README versions to ${project.version}" />
-                                        <replaceregexp file="README.md" match="&lt;version&gt;[^&lt;]+&lt;/version&gt;" replace="&lt;version&gt;${project.version}&lt;/version&gt;" flags="g" />
+                                        <echo message="Updating README versions to ${project.version}"/>
+                                        <replaceregexp
+                                                file="${project.basedir}/README.md"
+                                                match="&lt;version&gt;[^&lt;]+&lt;/version&gt;"
+                                                replace="&lt;version&gt;${project.version}&lt;/version&gt;"
+                                                flags="g"/>
                                     </target>
                                 </configuration>
                             </execution>
